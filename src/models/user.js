@@ -36,6 +36,14 @@ class User extends Model {
         this.props.name = val
     }
 
+    get grade_level() {
+        return this.props.grade_level
+    }
+
+    set grade_level(val) {
+        this.props.grade_level = +val
+    }
+
     get created_iso_date() {
         return this.props.created_iso_date
     }
