@@ -1,0 +1,22 @@
+html,
+body,
+img,
+div,
+button,
+input {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+html {
+    background: #eee;
+}
+body {
+    min-height: 100vh;
+}
+body,
+input,
+button {
+    font-family: sans-serif;
+}

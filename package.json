@@ -1,0 +1,17 @@
+{
+  "name": "akara",
+  "version": "1.0.0",
+  "description": "Attendance and attendee management for Greater Lafayette CoderDojo",
+  "main": "main.js",
+  "author": "Linus Lee <linus@thesephist.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "lowdb": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
