@@ -1,3 +1,4 @@
+/* RESETS */
 html,
 body,
 img,
@@ -20,3 +21,66 @@ input,
 button {
     font-family: sans-serif;
 }
+h1,
+h2,
+h3,
+h4,
+p,
+q {
+    margin-top: 0; /* flow unidirectionally */
+}
+
+/* LAYOUT */
+main {
+    maz-width: 700px;
+    margin: 0 auto;
+    padding: 12px 8px;
+}
+.card {
+    background: #fff;
+    box-shadow: 0 2px 6px -1px rgba(0, 0, 0, .4);
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 18px;
+    overflow: hidden; /* for floated elements to be contained */
+}
+input {
+    background: #eee;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+select,
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=number] {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 1em;
+    padding: 6px 8px;
+    min-width: 240px;
+}
+.inputGroup > label {
+    margin-bottom: 8px;
+}
+button {
+    display: block;
+    background: #2775ea;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    padding: 6px 8px;
+    color: #fff;
+    font-size: 1em;
+    float: left;
+    cursor: pointer;
+}
+button:hover {
+    opacity: .7;
+}
+.nextButton {
+    float: right;
+}
+.hidden {
+    display: none;
+}
+

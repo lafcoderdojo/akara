@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Akara | CoderDojo Lafayette</title>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Akara | CoderDojo Lafayette</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
 
-<body>
+  <body>
 
-  <h1>Welcome to CoderDojo Strike!</h1>
+    <main>
 
-  <div class="card step-1">
-    <label for="user_name">
-      <h1>What's your name?</h1>
-    </label>
-    <input type="text" id="user_name" />
-    <label for="user_here_before">I've bene here before</label>
-    <input type="checkbox" id="user_here_before" />
-    <button class="nextButton">Next</button>
-  </div>
+      <h1>Welcome to CoderDojo Strike!</h1>
 
-  <div class="card step-2">
-    <h2>Do you see yourself here?</h2>
-    <ul class="existingUsersList">
-      <!-- [[ populated via JS ]] -->
-    </ul>
-    <button class="noButton">No</button>
-    <button class="nextButton">Next</button>
-  </div>
+      <div class="card step-1">
+        <label for="user_name">
+          <h2>What's your name?</h2>
+        </label>
+        <input type="text" id="user_name" />
+        <label for="user_here_before">I've been here before</label>
+        <input type="checkbox" id="user_here_before" />
+        <button class="nextButton">Next</button>
+      </div>
+
+      <div class="card step-2">
+        <h2>Do you see yourself here?</h2>
+        <ul class="existingUsersList">
+          <!-- [[ populated via JS ]] -->
+        </ul>
+        <button class="noButton">No</button>
+        <button class="nextButton">Next</button>
+      </div>
 
 
-  <div class="card step-3">
-    <h2>Tell us about yourself!</h2>
+      <div class="card step-3">
+        <h2>Tell us about yourself!</h2>
 
-    <h3>Student info</h3>
-    <div class="inputGroup">
-      <label for="user_info_name">Name</label>
-      <input type="text" id="user_info_name">
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_school">School</label>
-      <input type="text" id="user_info_school">
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_grade_level">Grade Level</label>
-      <input type="number" id="user_info_grade_level">
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_gender">Gender (optional)</label>
-      <select id="user_info_gender">
-        <option value="male">Male</option>
-        <option value="female">Femmle</option>
-        <option value="non-binary">Nonbinary</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_race">Race (optional)</label>
-      <select id="user_info_race">
-        <!-- TODO: options later -->
-      </select>
-    </div>
-    <hr/>
-    <h3>Parent info</h3>
-    <div class="inputGroup">
-      <label for="user_info_parent_name">Name</label>
-      <input type="text" id="user_info_parent_name">
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_parent_email">Email</label>
-      <input type="email" id="user_info_parent_email">
-    </div>
-    <div class="inputGroup">
-      <label for="user_info_parent_phone">Phone</label>
-      <input type="tel" id="user_info_phone">
-    </div>
+        <h3>Student info</h3>
+        <div class="inputGroup">
+          <label for="user_info_name">Name</label>
+          <input type="text" id="user_info_name">
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_school">School</label>
+          <input type="text" id="user_info_school">
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_grade_level">Grade Level</label>
+          <input type="number" id="user_info_grade_level" step="1" min="1" max="12">
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_gender">Gender (optional)</label>
+          <select id="user_info_gender">
+            <option value="male">Male</option>
+            <option value="female">Femmle</option>
+            <option value="non-binary">Nonbinary</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_race">Race (optional)</label>
+          <select id="user_info_race">
+            <!-- TODO: options later -->
+          </select>
+        </div>
+        <hr/>
+        <h3>Parent info</h3>
+        <div class="inputGroup">
+          <label for="user_info_parent_name">Name</label>
+          <input type="text" id="user_info_parent_name">
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_parent_email">Email</label>
+          <input type="email" id="user_info_parent_email">
+        </div>
+        <div class="inputGroup">
+          <label for="user_info_parent_phone">Phone</label>
+          <input type="tel" id="user_info_phone">
+        </div>
 
-    <button class="nextButton">Next</button>
-  </div>
+        <button class="nextButton">Next</button>
+      </div>
 
-  <div class="card step-4">
-    <h2>You're all checked in!</h2>
-    <p>Thanks for coming to CoderDojo.</p>
-  </div>
+      <div class="card step-4">
+        <h2>You're all checked in!</h2>
+        <p>Thanks for coming to CoderDojo.</p>
+      </div>
 
-  <script src="js/main.js"></script>
-</body>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
 
 </html>
