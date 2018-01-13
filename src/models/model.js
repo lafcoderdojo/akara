@@ -3,7 +3,7 @@ const shortid = require('shortid')
 // synchronous filesystem db adapter for lowdb, async version is FileAsync
 const FileSync = require('lowdb/adapters/FileSync')
 
-const adapter = new FileSync('./db/db.json')
+const adapter = new FileSync('./db.json')
 const Database = low(adapter)
 
 class Model {
