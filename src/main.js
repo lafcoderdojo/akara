@@ -89,12 +89,19 @@ server.describe = function(modelClass) {
 server.api('/users', (req, res) => {
     const queries = url.parse(req.url, true).query
     let full_name_search
+    result = User.all().filter(queries)
     if (queries.full_name_search) {
         full_name_search = queries.full_name_search.toLowerCase().trim()
         delete queries.full_name_search
+
+        result = result.filter(obj => obj.name.toLowerCase().includes(full_name_search))
     }
-    return User.all().filter(queries)
-        .filter(obj => obj.name.toLowerCase() === full_name_search).value().slice(0, 10)
+    return result.value().slice(0, 6)
+}, 'get')
+
+server.api('/users/:pk/attendances', (req, res) => {
+    const queries = url.parse(req.url, true).query
+    return Attendance.all().filter({user_id: req.params.pk}).value()
 }, 'get')
 
 // App definitions
