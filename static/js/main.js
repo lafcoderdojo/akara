@@ -65,6 +65,11 @@ function logAttendance(user_id) {
 // hooks
 const hooks = {
     after_1: function() {
+        if (!name_input()) {
+            alert('Please tell us your name.')
+            return false
+        }
+
         if (been_here_before_checked()) {
             fetch(`/api/users/?full_name_search=${name_input().trim()}`)
             .then(resp => resp.json(), () => { })
