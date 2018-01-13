@@ -34,7 +34,7 @@ function userRow(userModel) {
 
     const userOptionLabel = document.createElement('label')
     userOptionLabel.setAttribute('for', inputLabel)
-    userOptionLabel.textContent = userModel.name
+    userOptionLabel.textContent = `${userModel.name} (from  ${userModel.user_info.school})`
 
     userOptionDiv.appendChild(userOptionInput)
     userOptionDiv.appendChild(userOptionLabel)
@@ -43,6 +43,10 @@ function userRow(userModel) {
 }
 
 function logAttendance(user_id) {
+    const name = name_input() && name_input().trim()
+    const first_name = name && name.split(' ')[0].toString()
+    if (first_name) $('#name').textContent = first_name[0].toUpperCase() + first_name.substr(1)
+
     fetch('/api/attendances/', {
         method: 'POST',
         headers: {
@@ -63,16 +67,22 @@ const hooks = {
     after_1: function() {
         if (been_here_before_checked()) {
             fetch(`/api/users/?full_name_search=${name_input().trim()}`)
-            .then(resp => resp.json(), () => {})
+            .then(resp => resp.json(), () => { })
             .then(users => {
                 const frag = document.createDocumentFragment()
-                for (const el of users.map(userRow)) {
-                    frag.appendChild(el)
+
+                if (users.length) {
+                    for (const el of users.map(userRow)) {
+                        frag.appendChild(el)
+                    }
+                    $('.existingUsersList').appendChild(frag)
+                } else {
+                    hooks.after_2()
                 }
-                $('.existingUsersList').appendChild(frag)
             })
         } else {
-            active_step ++
+            active_step ++;
+            document.body.classList.add('skipped-2')
         }
     },
     after_2: function() {
@@ -80,7 +90,8 @@ const hooks = {
         const uid = get_selected_previous_user_id()
         if (uid) {
             logAttendance(uid)
-            active_step ++
+            active_step ++;
+            document.body.classList.add('skipped-3')
         }
     },
     after_3: function() {

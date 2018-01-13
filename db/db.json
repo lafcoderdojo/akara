@@ -1,1 +1,194 @@
-{}
+{
+  "attendances": [
+    {
+      "user_id": "B1Yw58PVz",
+      "iso_date": "2018-01-13T10:07:28.833Z",
+      "dojo_slug": "strike",
+      "id": "SkxKv9IPVf"
+    },
+    {
+      "user_id": "B1Yw58PVz",
+      "iso_date": "2018-01-13T10:07:45.830Z",
+      "dojo_slug": "strike",
+      "id": "HJ5_c8v4f"
+    },
+    {
+      "user_id": "S1OasUwEz",
+      "iso_date": "2018-01-13T10:13:20.138Z",
+      "dojo_slug": "strike",
+      "id": "SJxd6s8vEf"
+    },
+    {
+      "user_id": "S1OasUwEz",
+      "iso_date": "2018-01-13T10:17:52.123Z",
+      "dojo_slug": "strike",
+      "id": "Sy_ChIw4f"
+    },
+    {
+      "user_id": "rJ1mpLwEf",
+      "iso_date": "2018-01-13T10:19:03.208Z",
+      "dojo_slug": "strike",
+      "id": "ByxymTIwNz"
+    },
+    {
+      "user_id": "rJ1mpLwEf",
+      "iso_date": "2018-01-13T10:19:20.313Z",
+      "dojo_slug": "strike",
+      "id": "HygNaUvNf"
+    },
+    {
+      "user_id": "HJLP6UDVz",
+      "iso_date": "2018-01-13T10:20:13.640Z",
+      "dojo_slug": "strike",
+      "id": "SygIw6IvNM"
+    },
+    {
+      "user_id": "BJIeALvEz",
+      "iso_date": "2018-01-13T10:22:37.868Z",
+      "dojo_slug": "strike",
+      "id": "SylIgCIwEG"
+    },
+    {
+      "user_id": "BJIeALvEz",
+      "iso_date": "2018-01-13T10:23:24.668Z",
+      "dojo_slug": "strike",
+      "id": "HkB7ALwVf"
+    },
+    {
+      "user_id": "ryi40IDEM",
+      "iso_date": "2018-01-13T10:23:47.034Z",
+      "dojo_slug": "strike",
+      "id": "S1ejECIwNz"
+    },
+    {
+      "user_id": "BJIeALvEz",
+      "iso_date": "2018-01-13T10:25:36.943Z",
+      "dojo_slug": "strike",
+      "id": "BytiC8vEM"
+    },
+    {
+      "user_id": "BJIeALvEz",
+      "iso_date": "2018-01-13T10:29:00.680Z",
+      "dojo_slug": "strike",
+      "id": "SkSOkvPNM"
+    },
+    {
+      "user_id": "ryi40IDEM",
+      "iso_date": "2018-01-13T10:29:23.126Z",
+      "dojo_slug": "strike",
+      "id": "SyiFyvPVf"
+    },
+    {
+      "user_id": "S1OasUwEz",
+      "iso_date": "2018-01-13T10:29:33.736Z",
+      "dojo_slug": "strike",
+      "id": "SkIqkvvVf"
+    },
+    {
+      "user_id": "HygTkvvEG",
+      "iso_date": "2018-01-13T10:30:15.909Z",
+      "dojo_slug": "strike",
+      "id": "HkglT1wwVf"
+    }
+  ],
+  "users": [
+    {
+      "name": "Linus Lee",
+      "grade_level": "11",
+      "created_iso_date": "2018-01-13T10:07:28.807Z",
+      "user_info": {
+        "race": "asian_pacific_islander",
+        "gender": "male",
+        "school": "West Side",
+        "parent_name": "CY Park",
+        "parent_email": "linus1015@yahoo.co.kr",
+        "parent_phone": "7654213719"
+      },
+      "id": "B1Yw58PVz"
+    },
+    {
+      "name": "Linus Lee ",
+      "grade_level": "8",
+      "created_iso_date": "2018-01-13T10:13:20.128Z",
+      "user_info": {
+        "race": "hispanic_latino",
+        "gender": "male",
+        "school": "Spartan Academy",
+        "parent_name": "CY Y",
+        "parent_email": "person@what.com",
+        "parent_phone": "234325424"
+      },
+      "id": "S1OasUwEz"
+    },
+    {
+      "name": "Tony Stark",
+      "grade_level": "12",
+      "created_iso_date": "2018-01-13T10:19:03.198Z",
+      "user_info": {
+        "race": "caucasian",
+        "gender": "male",
+        "school": "Stark Academy",
+        "parent_name": "Howard Stark",
+        "parent_email": "howard@stark.com",
+        "parent_phone": "1234365456"
+      },
+      "id": "rJ1mpLwEf"
+    },
+    {
+      "name": "tony stark",
+      "grade_level": "",
+      "created_iso_date": "2018-01-13T10:20:13.631Z",
+      "user_info": {
+        "race": "",
+        "gender": "",
+        "school": "",
+        "parent_name": "",
+        "parent_email": "",
+        "parent_phone": ""
+      },
+      "id": "HJLP6UDVz"
+    },
+    {
+      "name": "Steve Rogers",
+      "grade_level": "19",
+      "created_iso_date": "2018-01-13T10:22:37.858Z",
+      "user_info": {
+        "race": "caucasian",
+        "gender": "male",
+        "school": "Rogers Elementary",
+        "parent_name": "Black Widow",
+        "parent_email": "windower@adf",
+        "parent_phone": "34325346543"
+      },
+      "id": "BJIeALvEz"
+    },
+    {
+      "name": "Tony Stark",
+      "grade_level": "19",
+      "created_iso_date": "2018-01-13T10:23:47.025Z",
+      "user_info": {
+        "race": "african_american",
+        "gender": "female",
+        "school": "School Zone",
+        "parent_name": "1231",
+        "parent_email": "1234123",
+        "parent_phone": "3423523"
+      },
+      "id": "ryi40IDEM"
+    },
+    {
+      "name": "Scarlett Johansson",
+      "grade_level": "9",
+      "created_iso_date": "2018-01-13T10:30:15.899Z",
+      "user_info": {
+        "race": "caucasian",
+        "gender": "female",
+        "school": "Scarlett Academy",
+        "parent_name": "Black Window",
+        "parent_email": "wef32",
+        "parent_phone": "34235"
+      },
+      "id": "HygTkvvEG"
+    }
+  ]
+}

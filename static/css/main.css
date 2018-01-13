@@ -29,18 +29,23 @@ p,
 q {
     margin-top: 0; /* flow unidirectionally */
 }
+h2,
+h3,
+h4 {
+    font-weight: normal;
+}
 
 /* LAYOUT */
 main {
-    maz-width: 700px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 12px 8px;
+    padding: 24px 8px;
 }
 .card {
     background: #fff;
     box-shadow: 0 2px 6px -1px rgba(0, 0, 0, .4);
     border-radius: 4px;
-    padding: 12px;
+    padding: 14px 18px;
     margin-bottom: 18px;
     overflow: hidden; /* for floated elements to be contained */
 }
@@ -61,7 +66,7 @@ input[type=number] {
     min-width: 240px;
 }
 .inputGroup > label {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 button {
     display: block;
@@ -102,4 +107,40 @@ button:hover {
 .active_step_3 .step-3 button {
     pointer-events: all;
     opacity: 1;
+}
+.skipped-2 .step-2,
+.skipped-3 .step-3 {
+    display: none;
+}
+.active_step_4 .step-1,
+.active_step_4 .step-2,
+.active_step_4 .step-3 {
+    display: none;
+}
+
+/* MISC DESIGN POLISHES */
+#user_here_before {
+    /* Checkbox */
+    float: left;
+    margin-right: 12px;
+    margin-top: 2px;
+}
+hr {
+    display: block;
+    margin: 28px 20%;
+    border: 0;
+    background: #2775ea;
+    height: 2px;
+    opacity: .7;
+}
+.userOption {
+    list-style: none;
+    margin-bottom: 6px;
+    line-height: 1.3em;
+}
+.userOption input {
+    margin-right: 12px;
+}
+.step-4 {
+    background: #b8dffb;
 }

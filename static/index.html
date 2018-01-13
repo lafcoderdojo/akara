@@ -20,25 +20,26 @@
           <h2>What's your name?</h2>
         </label>
         <input type="text" id="user_name" />
-        <label for="user_here_before">I've been here before</label>
+        <label for="user_here_before">I've done this before</label>
         <input type="checkbox" id="user_here_before" />
         <button class="nextButton">Next</button>
       </div>
 
       <div class="card step-2">
-        <h2>Do you see yourself here?</h2>
+        <h2>Are you one of these people?</h2>
+        <p>Select one of the options if you recognize yourself here. If not, just click "Next"!</p>
+
         <ul class="existingUsersList">
           <!-- [[ populated via JS ]] -->
         </ul>
-        <button class="noButton">No</button>
         <button class="nextButton">Next</button>
       </div>
 
 
       <div class="card step-3">
-        <h2>Tell us about yourself!</h2>
+        <h2>Looks like you're new! Tell us a bit about yourself.</h2>
 
-        <h3>Student info</h3>
+        <h3>Student</h3>
         <div class="inputGroup">
           <label for="user_info_school">School</label>
           <input type="text" id="user_info_school">
@@ -70,26 +71,26 @@
           </select>
         </div>
         <hr/>
-        <h3>Parent info</h3>
+        <h3>Parent</h3>
         <div class="inputGroup">
           <label for="user_info_parent_name">Name</label>
           <input type="text" id="user_info_parent_name">
         </div>
         <div class="inputGroup">
           <label for="user_info_parent_email">Email</label>
-          <input type="email" id="user_info_parent_email">
+          <input type="email" id="user_info_parent_email" placeholder="person@example.com">
         </div>
         <div class="inputGroup">
           <label for="user_info_parent_phone">Phone</label>
-          <input type="tel" id="user_info_parent_phone">
+          <input type="tel" id="user_info_parent_phone" placeholder="1234567890">
         </div>
 
-        <button class="nextButton">Next</button>
+        <button class="nextButton">Submit</button>
       </div>
 
       <div class="card step-4">
-        <h2>You're all checked in!</h2>
-        <p>Thanks for coming to CoderDojo.</p>
+        <h2>You're all checked in, <span id="name">ninja</span>!</h2>
+        <p>Thanks for coming to CoderDojo. We hope you have a wonderful time here.</p>
       </div>
 
     </main>
