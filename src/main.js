@@ -95,14 +95,35 @@ server.api('/users', (req, res) => {
         delete queries.full_name_search
 
         result = result.filter(obj => obj.name.toLowerCase().includes(full_name_search))
+    } else {
+        // If there is no search string, prevent security issues by not returning any results
+        return []
     }
-    return result.value().slice(0, 6)
+    const lookups = result.value().slice(0, 6)
+
+    // for security purposes, demographic data is hidden here
+    return lookups.map(userJSON => {
+        return ({
+            id: userJSON.id,
+            name: userJSON.name,
+            user_info: {
+                school: userJSON.user_info.school,
+            },
+        })
+    })
 }, 'get')
 
 server.api('/users/:pk/attendances', (req, res) => {
     const queries = url.parse(req.url, true).query
     return Attendance.all().filter({user_id: req.params.pk}).value()
 }, 'get')
+
+// override the /users/:pk endpoint to hide sensitive demographic data
+server.api('/users/:pk', (req, res) => {
+    return {
+        Error: 'Individual user lookups are disabled at the moment',
+    }
+})
 
 // App definitions
 server.describe(User)
