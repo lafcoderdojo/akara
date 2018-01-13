@@ -73,9 +73,11 @@ button {
     font-size: 1em;
     float: left;
     cursor: pointer;
+    pointer-events: none;
+    opacity: .1;
 }
 button:hover {
-    opacity: .7;
+    transform: scale(1.1);
 }
 .nextButton {
     float: right;
@@ -84,3 +86,20 @@ button:hover {
     display: none;
 }
 
+/* CONTROL FLOW*/
+.active_step_1 .step-2,
+.active_step_1 .step-3,
+.active_step_1 .step-4,
+
+.active_step_2 .step-3,
+.active_step_2 .step-4,
+
+.active_step_3 .step-4 {
+    display: none;
+}
+.active_step_1 .step-1 button,
+.active_step_2 .step-2 button,
+.active_step_3 .step-3 button {
+    pointer-events: all;
+    opacity: 1;
+}

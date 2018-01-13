@@ -4,8 +4,8 @@ const Hash = require('crypto').createHash('sha256')
 const Attendance = require('./attendance')
 
 if (!Database.has('users').value()) {
-    Database.set('users', [])
-        .write()
+    Database.set('users', []).value()
+    Database.write()
 }
 
 function pw_hash(pw, salt) {
@@ -66,18 +66,6 @@ class User extends Model {
 
     set user_info(json) {
         this.props.user_info = json
-    }
-
-    hash_password(pw) {
-        return pw_hash(pw, this.email)
-    }
-
-    check_password(val) {
-        return (hash_password(val) === this.props.password_hash)
-    }
-
-    set_password(val) {
-        this.props.password_hash = this.hash_password(val)
     }
 
     get attendances() {

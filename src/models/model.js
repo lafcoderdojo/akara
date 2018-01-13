@@ -1,4 +1,5 @@
 const low = require('lowdb')
+const shortid = require('shortid')
 // synchronous filesystem db adapter for lowdb, async version is FileAsync
 const FileSync = require('lowdb/adapters/FileSync')
 
@@ -16,12 +17,21 @@ class Model {
         return Database.get(this.collectionName)
     }
 
+    all() {
+        // cheap hack but it's simple and it works
+        return this.constructor.all()
+    }
+
     static filter() {
         return this.all().filter.apply(this, arguments)
     }
 
     static get(props) {
         return this.all().find(props)
+    }
+
+    get(props) {
+        return this.constructor.get(props)
     }
 
     get id() {
@@ -38,15 +48,19 @@ class Model {
 
     save() {
         let instance = this.from_db()
-        if (instance) {
+        if (instance.value()) {
             // already exists, so find it and save
             instance.assign(this.props)
+            const fromDb = this.get({ id: instance.id })
+            instance = fromDb.assign(this.props).value()
         } else {
             // doesn't exist, create one
-            instance = this.all().push(this.props)
+            this.props.id = shortid.generate()
+            instance = this.all().push(this.props).value()
         }
 
-        instance.write()
+        Database.write()
+        return instance
     }
 
     delete() {

@@ -3,14 +3,12 @@ const config = require('../config')
 const Express = require('express')
 const server = Express()
 const path = require('path')
+const url = require('url')
 
 const User = require('./models/user')
 const Attendance = require('./models/attendance')
-// TODO: admin users?
 
-server.listen(config.PORT, () => {
-    console.log('Server started and listening on port ', config.PORT)
-})
+server.use('/api', Express.json())
 
 server.route = function(route, handler, method = 'get') {
     console.log(`Endpoint setup for ${method.toUpperCase()} to ${route}`)
@@ -46,7 +44,8 @@ server.describe = function(modelClass) {
     // list endpoints
 
     this.api(`/${modelClass.collectionName}`, (req, res) => {
-        return modelClass.all().value()
+        const queries = url.parse(req.url, true).query
+        return modelClass.all().filter(queries).value()
     }, 'get')
 
     this.api(`/${modelClass.collectionName}`, (req, res) => {
@@ -55,7 +54,7 @@ server.describe = function(modelClass) {
         instance.save()
 
         res.status(201)
-        return instance.props // includes id
+        return instance.props // include id here
     }, 'post')
 
     // instance endpoints
@@ -86,15 +85,30 @@ server.describe = function(modelClass) {
 
 }
 
+// Specific API definitions
+server.api('/users', (req, res) => {
+    const queries = url.parse(req.url, true).query
+    let full_name_search
+    if (queries.full_name_search) {
+        full_name_search = queries.full_name_search.toLowerCase().trim()
+        delete queries.full_name_search
+    }
+    return User.all().filter(queries)
+        .filter(obj => obj.name.toLowerCase() === full_name_search).value().slice(0, 10)
+}, 'get')
+
 // App definitions
 server.describe(User)
 server.describe(Attendance)
 
 // serialize incoming request data as JSON for API requests
-server.use('/api', Express.json())
 server.use('/', Express.static('./static/'))
 server.use('/', (req, res) => {
     res.sendFile('index.html', {
         root: path.join(__dirname, '../static/')
     })
+})
+
+server.listen(config.PORT, () => {
+    console.log('Server started and listening on port', config.PORT)
 })

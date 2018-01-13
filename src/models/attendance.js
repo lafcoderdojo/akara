@@ -2,8 +2,8 @@ const {Database, Model} = require('./model')
 const Hash = require('crypto').createHash('sha256')
 
 if (!Database.has('attendances').value()) {
-    Database.set('attendances', [])
-        .write()
+    Database.set('attendances', []).value()
+    Database.write()
 }
 
 function pw_hash(pw, salt) {
