@@ -77,22 +77,25 @@ const hooks = {
                     }
                     $('.existingUsersList').appendChild(frag)
                 } else {
-                    hooks.after_2()
+                    document.body.classList.add('skipped-2')
+                    increment_step(true)
                 }
             })
+            return true
         } else {
-            active_step ++;
+            increment_step(true)
             document.body.classList.add('skipped-2')
+            return true
         }
     },
     after_2: function() {
-        // - If a match exists, log a new Attendance model for the user with the current date and goto 4
         const uid = get_selected_previous_user_id()
         if (uid) {
             logAttendance(uid)
-            active_step ++;
+            increment_step(true)
             document.body.classList.add('skipped-3')
         }
+        return true
     },
     after_3: function() {
         const userInfoProps = {
@@ -105,12 +108,29 @@ const hooks = {
             parent_phone: $('#user_info_parent_phone').value,
         }
         const userProps = {
-            name: $('#user_name').value,
+            name: name_input(),
             grade_level: $("#user_info_grade_level").value,
             created_iso_date: new Date().toISOString(),
 
             user_info: userInfoProps,
         }
+
+        // VALIDATION!
+        const REQUIRED_FIELDS = {
+            '#user_name': 'student\'s name',
+            '#user_info_school': 'school name',
+            '#user_info_grade_level': 'student\'s grade level',
+            '#user_info_parent_name': 'parent name',
+            '#user_info_parent_email': 'parent email',
+            '#user_info_parent_phone': 'parent phone number',
+        }
+        for (const id in REQUIRED_FIELDS) {
+            if (!$(id).value) {
+                alert(`The ${REQUIRED_FIELDS[id]} is required.`)
+                return false // don't flip the next step just yet
+            }
+        }
+
         fetch('/api/users/', {
             method: 'POST',
             headers: {
@@ -124,15 +144,18 @@ const hooks = {
         }).catch(() => {
             alert('Something went wrong. If this keeps happening, please talk to a Dojo mentor.')
         })
+
+        return true
     },
 }
 
-function increment_step() {
-    document.body.classList.remove(`active_step_${active_step}`);
+function increment_step(force) {
     const hook = hooks[`after_${active_step}`];
-    if (hook) hook();
-    ++active_step;
-    document.body.classList.add(`active_step_${active_step}`);
+    if (force || !hook || (hook && hook())) {
+        document.body.classList.remove(`active_step_${active_step}`);
+        active_step++;
+        document.body.classList.add(`active_step_${active_step}`);
+    }
 }
 
 function start() {
@@ -141,7 +164,7 @@ function start() {
 
 // Event bindings
 for (const el of $$('.nextButton')) {
-    el.addEventListener('click', increment_step)
+    el.addEventListener('click',  evt => increment_step())
 }
 
 // Start app
