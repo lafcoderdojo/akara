@@ -6,7 +6,8 @@
   "author": "Linus Lee <linus@thesephist.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "shell": "node src/shell.js"
   },
   "dependencies": {
     "express": "^4.16.2",
