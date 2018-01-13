@@ -8,7 +8,7 @@ const $$ = (arg) => {
 }
 
 function name_input() {
-    return $('#user_name').value || ''
+    return ($('#user_name').value || '').trim()
 }
 
 function been_here_before_checked() {
@@ -43,7 +43,7 @@ function userRow(userModel) {
 }
 
 function logAttendance(user_id) {
-    const name = name_input() && name_input().trim()
+    const name = name_input()
     const first_name = name && name.split(' ')[0].toString()
     if (first_name) $('#name').textContent = first_name[0].toUpperCase() + first_name.substr(1)
 
@@ -71,7 +71,7 @@ const hooks = {
         }
 
         if (been_here_before_checked()) {
-            fetch(`/api/users/?full_name_search=${name_input().trim()}`)
+            fetch(`/api/users/?full_name_search=${name_input()}`)
             .then(resp => resp.json(), () => { })
             .then(users => {
                 const frag = document.createDocumentFragment()
@@ -130,7 +130,7 @@ const hooks = {
             '#user_info_parent_phone': 'parent phone number',
         }
         for (const id in REQUIRED_FIELDS) {
-            if (!$(id).value) {
+            if (!($(id).value || '').trim()) {
                 alert(`The ${REQUIRED_FIELDS[id]} is required.`)
                 return false // don't flip the next step just yet
             }
