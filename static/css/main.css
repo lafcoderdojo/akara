@@ -144,3 +144,15 @@ hr {
 .step-4 {
     background: #b8dffb;
 }
+.startOverButton {
+    display: block;
+    background: #888;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 1em;
+    float: right;
+    cursor: pointer;
+}
