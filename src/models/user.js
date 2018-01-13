@@ -70,10 +70,10 @@ class User extends Model {
 
     get attendances() {
         if (this.id) {
-            return Attendance.filter({user_id: this.id})
+            return Attendance.all().filter({user_id: this.id})
         } else {
             // should return an empty collection of Attendances
-            return Attendance.filter({user_id: -1})
+            return Attendance.all().filter({user_id: -1})
         }
     }
 
