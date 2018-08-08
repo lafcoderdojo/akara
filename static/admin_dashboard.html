@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Akara | CoderDojo Lafayette</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+
+  <body>
+
+    <main class="allowed_false">
+
+      <h1>CoderDojo Admin Dashboard</h1>
+
+      <div class="card auth">
+        <label for="password">
+          <h2>Password</h2>
+        </label>
+        <input type="password" id="password" autofocus>
+        <button class="authButton">Submit</button>
+      </div>
+
+      <div class="card eventLabel">
+        <label for="event_label">
+          <h2>Set and Update Event Type</h2>
+          <p>New attendances will be recorded for this event type. Currently, it's set to:</p>
+        </label>
+        <div class="inputGroup">
+          <select id="event_label">
+            <option value="strike">Strike</option>
+            <option value="imagine">Imagine</option>
+            <option value="other">Other (blank)</option>
+          </select>
+        </div>
+        <button class="saveEventLabelButton">Save Event Label</button>
+      </div>
+
+      <div class="card downloadCSV">
+        <h2>Download Attendance Data</h2>
+        <p>You'll get a CSV with information about all attendees for this date.</p>
+        <label for="event_date">Event Date:</label>
+        <select id="event_date" name="event_date">
+          <!-- options populated in JS -->
+        </select>
+        <button class="downloadButton">Download in CSV (for Excel)</button>
+      </div>
+
+    </main>
+
+    <script src="js/admin.js"></script>
+  </body>
+
+</html>

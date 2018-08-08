@@ -11,10 +11,6 @@ function name_input() {
     return ($('#user_name').value || '').trim()
 }
 
-function been_here_before_checked() {
-    return $('#user_here_before').checked
-}
-
 function get_selected_previous_user_id() {
     const selected = $('[name=user_previous_options]:checked')
     return selected && selected.value
@@ -55,7 +51,7 @@ function logAttendance(user_id) {
         body: JSON.stringify({
             user_id: user_id,
             iso_date: new Date().toISOString(),
-            dojo_slug: 'strike', // TODO: generalize this
+            // dojo_slug is set on the server-side
         }),
     }).catch(() => {
         alert('Something went wrong. If this keeps happening, please talk to a Dojo mentor.')
@@ -70,8 +66,7 @@ const hooks = {
             return false
         }
 
-        if (been_here_before_checked()) {
-            fetch(`/api/users/?full_name_search=${name_input()}`)
+        fetch(`/api/users/?full_name_search=${name_input()}`)
             .then(resp => resp.json(), () => { })
             .then(users => {
                 const frag = document.createDocumentFragment()
@@ -86,12 +81,7 @@ const hooks = {
                     increment_step(true)
                 }
             })
-            return true
-        } else {
-            increment_step(true)
-            document.body.classList.add('skipped-2')
-            return true
-        }
+        return true
     },
     after_2: function() {
         const uid = get_selected_previous_user_id()

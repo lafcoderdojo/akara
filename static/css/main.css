@@ -84,7 +84,10 @@ button {
 button:hover {
     transform: scale(1.1);
 }
-.nextButton {
+.authButton,
+.nextButton,
+.downloadButton,
+.saveEventLabelButton {
     float: right;
 }
 .hidden {
@@ -102,6 +105,9 @@ button:hover {
 .active_step_3 .step-4 {
     display: none;
 }
+.authButton,
+.downloadButton,
+.saveEventLabelButton,
 .active_step_1 .step-1 button,
 .active_step_2 .step-2 button,
 .active_step_3 .step-3 button {
@@ -155,4 +161,16 @@ hr {
     font-size: 1em;
     float: right;
     cursor: pointer;
+}
+.allowed_false .card {
+    display: none;
+}
+.allowed_false .card.auth {
+    display: block;
+}
+.allowed_true .card {
+    display: block;
+}
+.allowed_true .card.auth {
+    display: none;
 }

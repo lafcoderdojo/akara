@@ -1,4 +1,7 @@
 .vscode/
 node_modules/
 npm-debug.log
+
 db.json
+key.txt
+

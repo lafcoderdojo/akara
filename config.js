@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const CONFIG = {
 
     PORT: 5000,
@@ -13,14 +15,14 @@ const CONFIG = {
         },
     ],
 
-    API_DOMAIN: 'https://akara.now.sh',
-    STATIC_DOMAIN: 'https://akara.surge.sh',
-
     CORS_ALLOWED_ORIGINS: [
         'https://akara.surge.sh',
         'http://localhost:5000',
         'http://localhost',
     ],
+
+    // read the hash from ./key.txt here.
+    ADMIN_PASSWORD_HASH: fs.readFileSync('./key.txt', {encoding: 'utf8'}).trim(),
 
 }
 

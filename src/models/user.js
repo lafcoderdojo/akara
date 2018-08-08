@@ -70,11 +70,30 @@ class User extends Model {
 
     get attendances() {
         if (this.id) {
-            return Attendance.all().filter({user_id: this.id})
+            return Attendance.filter({user_id: this.id})
         } else {
             // should return an empty collection of Attendances
-            return Attendance.all().filter({user_id: -1})
+            return Attendance.filter({user_id: -1})
         }
+    }
+
+    /**
+     * Filter users by attendance on a particular date
+     *
+     * @param {Date|String} date - date of event, in either ISO string or a Date object
+     */
+    static filter_for_attendance(date) {
+        if (date instanceof Date) {
+            date = date.toISOString()
+        }
+
+        const user_ids = Attendance
+            .filter(a => a.iso_date.includes(date))
+            .map(a => a.user_id)
+            .value()
+        const users = User
+            .filter(u => user_ids.includes(u.id))
+        return users
     }
 
 }

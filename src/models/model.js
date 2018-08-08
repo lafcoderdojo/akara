@@ -22,8 +22,9 @@ class Model {
         return this.constructor.all()
     }
 
-    static filter() {
-        return this.all().filter.apply(this, arguments)
+    // condition can be a set of key-values or a function
+    static filter(condition) {
+        return this.all().filter(condition)
     }
 
     static get(props) {
