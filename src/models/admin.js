@@ -11,8 +11,10 @@ if (!Database.has('event_slug').value()) {
 class Admin {
 
     static validatePassword(password_value) {
+        if (typeof password_value !== 'string') return false
+
         const password_hash = crypto.createHash('sha256').update(password_value).digest('base64')
-        return password_hash === config.ADMIN_PASSWORD_HASH;
+        return password_hash === config.ADMIN_PASSWORD_HASH
     }
 
     static get_event_label() {
