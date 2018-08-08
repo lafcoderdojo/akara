@@ -83,6 +83,7 @@ const set_event_dates = event_dates => {
         return el
     }
     const optionEls = event_dates.map(createOptionEl)
+        .sort().reverse() // reverse chron.
     const frag = document.createDocumentFragment()
     for (const el of optionEls) frag.appendChild(el)
 
@@ -144,5 +145,12 @@ const validate_password = _ => {
 // Bind events
 $('.saveEventLabelButton').addEventListener('click', save_event_label)
 $('.downloadButton').addEventListener('click', download_csv)
-$('.authButton').addEventListener('click', validate_password);
+$('.authButton').addEventListener('click', validate_password)
+
+// Enter to log in on the password field
+$('#password').addEventListener('keypress', evt => {
+    if (evt.keyCode && evt.keyCode === 13) {
+        validate_password()
+    }
+})
 
