@@ -217,6 +217,11 @@ server.admin_api('/download_attendance_csv', (req, res) => {
         }
     }
 })
+server.admin_api('/download_all_users', (req, res) => {
+    const users = User.all()
+    res.setHeader('Content-Type', 'text/csv')
+    return json_to_csv(users)
+})
 
 // App definitions
 server.describe(User)

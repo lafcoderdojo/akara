@@ -27,7 +27,16 @@ const set_allowed_state = _ => {
     })
 }
 
-// make a wrapper for admin requests with the right header and /api/ URI prefix
+const download_as_csv = (csv_text, filename = 'data.csv') => {
+    // Create text file with csv as content, and download
+    const link = document.createElement('a')
+    link.style.display = 'none'
+    link.download = filename
+    link.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv_text)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+}
 
 const save_event_label = _ => {
     const event_slug_input = $('#event_label').value
@@ -98,18 +107,24 @@ const download_csv = _ => {
         }).then(resp => {
             return resp.text()
         }).then((csv) => {
-            // Create text file with csv as content, and download
-            const link = document.createElement('a')
-            link.style.display = 'none'
-            link.download = `coderdojo_${event_date_input}.csv`
-            link.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv)
-            document.body.appendChild(link)
-            link.click()
-            document.body.removeChild(link)
+            download_as_csv(csv, `coderdojo_${event_date_input}.csv`)
         }).catch(e => {
             alert('Error: ' + e.toString())
         })
+    } else {
+        alert('Please choose a date for which to export attendance data.')
     }
+}
+const download_all_csv = _ => {
+    fetch('/api/download_all_users', {
+        headers: ADMIN_HEADERS,
+    }).then(resp => {
+        return resp.text()
+    }).then((csv) => {
+        download_as_csv(csv, 'coderdojo_all_students.csv')
+    }).catch(e => {
+        alert('Error: ' + e.toString())
+    })
 }
 
 const validate_password = _ => {
@@ -145,6 +160,7 @@ const validate_password = _ => {
 // Bind events
 $('.saveEventLabelButton').addEventListener('click', save_event_label)
 $('.downloadButton').addEventListener('click', download_csv)
+$('.downloadAllButton').addEventListener('click', download_all_csv)
 $('.authButton').addEventListener('click', validate_password)
 
 // Enter to log in on the password field
