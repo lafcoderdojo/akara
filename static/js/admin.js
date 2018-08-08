@@ -1,4 +1,6 @@
-let password_value = ''
+const ADMIN_HEADERS = {
+    'X-Admin-Pass': null,
+}
 
 const $ = document.querySelector.bind(document)
 const $$ = (arg) => {
@@ -31,9 +33,7 @@ const save_event_label = _ => {
     const event_slug_input = $('#event_label').value
     if (event_slug_input) {
         fetch(`/api/update_event_label?event_label=${event_slug_input}`, {
-            headers: {
-                'X-Admin-Pass': password_value,
-            },
+            headers: ADMIN_HEADERS,
             method: 'POST',
         }).then(resp => {
             alert(`Success! Events are now set as ${event_slug_input.toUpperCase()}.`)
@@ -48,9 +48,7 @@ const save_event_label = _ => {
 const get_event_label = _ => {
     return new Promise((res, rej) => {
         fetch('/api/get_event_label', {
-            headers: {
-                'X-Admin-Pass': password_value,
-            }
+            headers: ADMIN_HEADERS,
         }).then(resp => {
             return resp.json()
         }).then(resp_json => {
@@ -65,9 +63,7 @@ const get_event_label = _ => {
 const get_event_dates = _ => {
     return new Promise((res, rej) => {
         fetch('/api/get_event_dates', {
-            headers: {
-                'X-Admin-Pass': password_value,
-            }
+            headers: ADMIN_HEADERS,
         }).then(resp => {
             return resp.json()
         }).then(resp_json => {
@@ -97,9 +93,7 @@ const download_csv = _ => {
     const event_date_input = $('#event_date').value
     if (event_date_input) {
         fetch(`/api/download_attendance_csv?event_date=${event_date_input}`, {
-            headers: {
-                'X-Admin-Pass': password_value,
-            }
+            headers: ADMIN_HEADERS,
         }).then(resp => {
             return resp.text()
         }).then((csv) => {
@@ -118,7 +112,8 @@ const download_csv = _ => {
 }
 
 const validate_password = _ => {
-    password_value = $('#password').value
+    const password_value = $('#password').value
+    ADMIN_HEADERS['X-Admin-Pass'] = password_value
     const clear_pw = _ => {
         $('#password').value = ''
         $('#password').focus()
