@@ -91,8 +91,7 @@ const set_event_dates = event_dates => {
         el.textContent = isoDate
         return el
     }
-    const optionEls = event_dates.map(createOptionEl)
-        .sort().reverse() // reverse chron.
+    const optionEls = event_dates.sort().reverse().map(createOptionEl) // reverse chronological
     const frag = document.createDocumentFragment()
     for (const el of optionEls) frag.appendChild(el)
 
