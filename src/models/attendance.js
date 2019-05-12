@@ -22,13 +22,13 @@ class Attendance extends Model {
         return 'attendances'
     }
 
-    // returns the latest 24 dates (usually 1 year)
+    // returns the latest 36 dates (usually 1.5 year)
     static get_distinct_dates() {
         const date_set = new Set()
         for (const attendance of this.all().value()) {
             date_set.add(attendance.iso_date.substr(0, 10))
         }
-        return [...date_set].slice(0, 24)
+        return [...date_set].reverse().slice(0, 36)
     }
 
     constructor(props) {
